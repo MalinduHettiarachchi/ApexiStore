@@ -8,7 +8,7 @@ from sklearn.pipeline import make_pipeline
 from sklearn.compose import ColumnTransformer
 
 # Load and preprocess the dataset
-file_path = 'E:/ML/Assessment_4/Dataset/laptop_price.csv'
+file_path = 'E:/Projects/ApexiStore/backend/datasets/laptop_price.csv'
 laptop_df = pd.read_csv(file_path, encoding='ISO-8859-1')
 
 X = laptop_df[['Brand', 'Processor', 'RAM', 'GPU']]
