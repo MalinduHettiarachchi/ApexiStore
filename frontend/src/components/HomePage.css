@@ -1,0 +1,45 @@
+.HomePage {
+    max-width: 1000px; /* Adjust as needed */
+    margin: 0 auto;
+  }
+  
+  form {
+    display: flex;
+    flex-wrap: wrap; /* Allows wrapping if space is constrained */
+    gap: 16px; /* Space between elements */
+    align-items: center; /* Align items vertically centered */
+  }
+  
+  label {
+    display: flex;
+    flex-direction: column;
+    margin: 8px 0;
+  }
+  
+  input,
+  select {
+    margin-top: 4px;
+    box-sizing: border-box; /* Includes padding and border in width calculation */
+  }
+  
+  select {
+    width: 200px; /* Adjust size as needed */
+  }
+  
+  input.processor {
+    width: 300px; /* Adjust size as needed */
+  }
+  
+  input.ram {
+    width: 250px; /* Adjust size as needed */
+  }
+  
+  input.gpu {
+    width: 280px; /* Adjust size as needed */
+  }
+  
+  button {
+    margin-top: 12px;
+    align-self: flex-start; /* Aligns button to the start of the row */
+  }
+  
