@@ -2,6 +2,10 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { motion, useAnimation } from 'framer-motion';
 import '../components/HomePage.css';
+import apple from '../assets/apple.png';
+import dell from '../assets/dell.png';
+import hp from '../assets/hp.png';
+import lenovo from '../assets/lenovo.png';
 
 function HomePage() {
   const [formData, setFormData] = useState({
@@ -56,6 +60,38 @@ function HomePage() {
 
   return (
     <div className="HomePage">
+      <div className="logo-container">
+        <motion.div
+          initial={{x:-100,opacity:0}}
+          animate={{x:0,opacity:1}}
+          transition={{duration:0.5,delay:0.5}}
+        > 
+         <img src={apple} alt="Logo" className="apple" />
+        </motion.div>
+        
+        <motion.div
+          initial={{x:-100,opacity:0}}
+          animate={{x:0,opacity:1}}
+          transition={{duration:0.5,delay:1}}
+        > 
+         <img src={dell} alt="Logo" className="dell" />
+        </motion.div>
+        <motion.div
+          initial={{x:-100,opacity:0}}
+          animate={{x:0,opacity:1}}
+          transition={{duration:0.5,delay:1.5}}
+        > 
+         <img src={hp} alt="Logo" className="hp" />
+        </motion.div>
+        
+        <motion.div
+          initial={{x:-100,opacity:0}}
+          animate={{x:0,opacity:1}}
+          transition={{duration:0.5,delay:2}}
+        > 
+         <img src={lenovo} alt="Logo" className="lenovo" />
+        </motion.div>
+      </div>
       <h1 className='h1'>Choose Your Laptop</h1>
       <form className = 'form' onSubmit={handleSubmit}>
         <motion.div className="form-group">
