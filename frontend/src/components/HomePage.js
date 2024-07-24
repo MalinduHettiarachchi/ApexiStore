@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { motion, useAnimation } from 'framer-motion';
-import '../components/HomePage.css'; // Adjust path if needed
+import '../components/HomePage.css';
 
 function HomePage() {
   const [formData, setFormData] = useState({
@@ -11,7 +11,9 @@ function HomePage() {
     gpu: ''
   });
 
-  const [predictedPrice, setPredictedPrice] = useState('');
+  const [result, setResult] = useState({
+    details: {}
+  });
 
   const brandControls = useAnimation();
   const processorControls = useAnimation();
@@ -29,7 +31,9 @@ function HomePage() {
     e.preventDefault();
     axios.post('http://127.0.0.1:5000/predict', formData)
       .then(response => {
-        setPredictedPrice(`The predicted price for the specified configuration is: €${response.data.predicted_price}`);
+        setResult({
+          details: response.data.details
+        });
       })
       .catch(error => {
         console.error('There was an error making the request!', error);
@@ -39,24 +43,23 @@ function HomePage() {
   const handleFocus = (controls) => {
     controls.start({
       scale: 1.1,
-      transition: { duration: 0.2 },
+      transition: { duration: 0.2},
     });
   };
 
   const handleBlur = (controls) => {
     controls.start({
       scale: 1,
-      transition: { duration: 0.2 },
+      transition: { duration: 0.5 },
     });
   };
 
   return (
     <div className="HomePage">
-      <h1>Choose Your Laptop</h1>
-      <form onSubmit={handleSubmit}>
+      <h1 className='h1'>Choose Your Laptop</h1>
+      <form className = 'form' onSubmit={handleSubmit}>
         <motion.div className="form-group">
           <label>
-            Brand:
             <motion.select 
               name="brand" 
               value={formData.brand} 
@@ -65,6 +68,8 @@ function HomePage() {
               onBlur={() => handleBlur(brandControls)}
               required
               animate={brandControls}
+              style={{marginTop:'20px'}}
+              className="select-brand"
             >
               <option value="">Select by Brand</option>
               <option value="Acer">Acer</option>
@@ -78,7 +83,6 @@ function HomePage() {
             </motion.select>
           </label>
           <label>
-            Processor:
             <motion.select 
               name="processor" 
               value={formData.processor} 
@@ -87,14 +91,15 @@ function HomePage() {
               onBlur={() => handleBlur(processorControls)}
               required
               animate={processorControls}
+              style={{marginLeft:'220px',marginTop:'-45px'}}
+              className="select-processor"
             >
               <option value="">Select by Processor</option>
-              <option value="Intel i3">Intel i3</option>
+              <option value="Intel Core i3">Intel Core i3</option>
               <option value="Intel Core i5">Intel Core i5</option>
-              <option value="Intel Core i5 2.3GHz">Intel Core i5 2.3GHz</option>
-              <option value="Intel Core i5 7200U 2.5GHz">Intel Core i5 7200U 2.5GHz</option>
-              <option value="Intel i7">Intel i7</option>
-              <option value="Intel i9">Intel i9</option>
+              <option value="Intel Core i7">Intel Core i7</option>
+              <option value="Intel Celeron Dual Core">Intel Celeron Dual Core</option>
+              <option value="Intel Pentium Quad Core">Intel Pentium Quad Core</option>
               <option value="AMD Ryzen 3">AMD Ryzen 3</option>
               <option value="AMD Ryzen 5">AMD Ryzen 5</option>
               <option value="AMD Ryzen 7">AMD Ryzen 7</option>
@@ -102,7 +107,6 @@ function HomePage() {
             </motion.select>
           </label>
           <label>
-            RAM:
             <motion.select 
               name="ram" 
               value={formData.ram} 
@@ -111,6 +115,8 @@ function HomePage() {
               onBlur={() => handleBlur(ramControls)}
               required
               animate={ramControls}
+              style={{marginLeft:'440px',marginTop:'-53px'}}
+              className="select-ram"
             >
               <option value="">Select by RAM</option>
               <option value="4GB">4GB</option>
@@ -122,7 +128,6 @@ function HomePage() {
             </motion.select>
           </label>
           <label>
-            GPU:
             <motion.select 
               name="gpu" 
               value={formData.gpu} 
@@ -131,12 +136,20 @@ function HomePage() {
               onBlur={() => handleBlur(gpuControls)}
               required
               animate={gpuControls}
+              style={{marginLeft:'660px',marginTop:'-62px'}}
+              className="select-gpu"
             >
               <option value="">Select by GPU</option>
-              <option value="Integrated">Integrated</option>
+              <option value="Intel HD Graphics 400">Intel HD Graphics 400</option>
+              <option value="Intel HD Graphics 500">Intel HD Graphics 500</option>
+              <option value="Intel HD Graphics 520">Intel HD Graphics 520</option>
+              <option value="Intel HD Graphics 620">Intel HD Graphics 620</option>
               <option value="Intel Iris Plus Graphics 640">Intel Iris Plus Graphics 640</option>
-              <option value="NVIDIA GeForce GTX 1650">NVIDIA GeForce GTX 1650</option>
-              <option value="NVIDIA GeForce GTX 1660">NVIDIA GeForce GTX 1660</option>
+              <option value="Nvidia GeForce 940MX">Nvidia GeForce 940MX</option>
+              <option value="Nvidia GeForce MX130">Nvidia GeForce MX130</option>
+              <option value="Nvidia GeForce MX150">Nvidia GeForce MX150</option>
+              <option value="Nvidia GeForce GTX 1050">Nvidia GeForce GTX 1050</option>
+              <option value="Nvidia GeForce GTX 1070">Nvidia GeForce GTX 1070</option>
               <option value="NVIDIA GeForce RTX 2060">NVIDIA GeForce RTX 2060</option>
               <option value="NVIDIA GeForce RTX 3060">NVIDIA GeForce RTX 3060</option>
               <option value="AMD Radeon RX 5500M">AMD Radeon RX 5500M</option>
@@ -145,9 +158,19 @@ function HomePage() {
             </motion.select>
           </label>
         </motion.div>
-        <button type="submit">Search</button>
+        <button className='submit' type="submit">Search</button>
       </form>
-      {predictedPrice && <h2>{predictedPrice}</h2>}
+      {result.details && (
+        <div className="laptop-details">
+          <div className="card">
+            <ul>
+              {Object.keys(result.details).map(key => (
+                <li key={key}><strong>{key}:</strong> {result.details[key]}</li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

@@ -1,45 +1,99 @@
+:root {
+  --primary-color: #007bff;
+  --primary-color-hover: #0056b3;
+  --background-color: #f4f4f9;
+  --card-background-color: #ffffff;
+  --text-color: #333;
+  --border-color: #ddd;
+}
+
+body {
+  background-color: var(--background-color);
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
 .HomePage {
-    max-width: 1000px; /* Adjust as needed */
-    margin: 0 auto;
-  }
-  
-  form {
-    display: flex;
-    flex-wrap: wrap; /* Allows wrapping if space is constrained */
-    gap: 16px; /* Space between elements */
-    align-items: center; /* Align items vertically centered */
-  }
-  
-  label {
-    display: flex;
-    flex-direction: column;
-    margin: 8px 0;
-  }
-  
-  input,
-  select {
-    margin-top: 4px;
-    box-sizing: border-box; /* Includes padding and border in width calculation */
-  }
-  
-  select {
-    width: 200px; /* Adjust size as needed */
-  }
-  
-  input.processor {
-    width: 300px; /* Adjust size as needed */
-  }
-  
-  input.ram {
-    width: 250px; /* Adjust size as needed */
-  }
-  
-  input.gpu {
-    width: 280px; /* Adjust size as needed */
-  }
-  
-  button {
-    margin-top: 12px;
-    align-self: flex-start; /* Aligns button to the start of the row */
-  }
-  
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
+  margin-top: 50px;
+  background-color: var(--card-background-color);
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  font-size: 16px;
+}
+
+h1.h1 {
+  text-align: center;
+  color: var(--primary-color);
+}
+
+form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  align-items: center;
+  margin-top: -10px;
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+  margin: 8px 0;
+}
+
+select {
+  width: 200px;
+  padding: 8px;
+  border-radius: 4px;
+  border: 1px solid var(--border-color);
+  font-size: 16px;
+  background-color: var(--card-background-color);
+  color: var(--text-color);
+}
+
+button {
+  margin-top: -6px;
+  padding: 10px 20px;
+  background-color: var(--primary-color);
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: var(--primary-color-hover);
+}
+
+.laptop-details {
+  margin-top: 5px;
+}
+
+.card {
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 16px;
+  max-width: 300px;
+  background-color: var(--card-background-color);
+  font-size: 15px;
+}
+
+.card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.card li {
+  margin-bottom: 8px;
+}
+
+.card strong {
+  color: var(--text-color);
+}
