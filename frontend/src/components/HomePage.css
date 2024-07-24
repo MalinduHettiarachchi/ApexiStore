@@ -1,5 +1,5 @@
 :root {
-  --primary-color: #007bff;
+  --primary-color: #000000;
   --primary-color-hover: #0056b3;
   --background-color: #f4f4f9;
   --card-background-color: #ffffff;
@@ -69,7 +69,26 @@ button {
 button:hover {
   background-color: var(--primary-color-hover);
 }
-
+.acer{
+  width: 70px;
+}
+.hp{
+  width: 60px;
+}
+.dell{
+  width: 65px;
+}
+.lenovo{
+  width: 85px;
+}
+.msi{
+  width: 85px;
+  margin-bottom: 60px;
+  
+}
+.apple{
+  width: 60px;
+}
 .laptop-details {
   margin-top: 5px;
 }
@@ -96,4 +115,13 @@ button:hover {
 
 .card strong {
   color: var(--text-color);
+}
+.logo-container {
+  display: flex;
+  justify-content: center; /* Centers the logos horizontally */
+  margin-bottom: 20px; /* Adds some space below the logos */
+}
+
+.logo-container img {
+  margin: 0 10px; /* Adds space between logos */
 }
