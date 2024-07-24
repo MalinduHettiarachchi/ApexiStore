@@ -92,6 +92,7 @@ function HomePage() {
               <option value="Intel i3">Intel i3</option>
               <option value="Intel i5">Intel i5</option>
               <option value="Intel Core i5 2.3GHz">Intel Core i5 2.3GHz</option>
+              <option value="Intel Core i5 7200U 2.5GHz">Intel Core i5 7200U 2.5GHz</option>
               <option value="Intel i7">Intel i7</option>
               <option value="Intel i9">Intel i9</option>
               <option value="AMD Ryzen 3">AMD Ryzen 3</option>
